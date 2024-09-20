@@ -303,7 +303,7 @@ class AdvancedSearchForm extends FormBase {
           '#type' => 'select',
           '#attributes' => [
             'aria-label' => $this->t("Select Entity"),
-            'class' => [$block_class_prefix . '-entity'],
+            'class' => [$block_class_prefix . '--entity'],
           ],
           '#options' => [
             'alles' => $this->t('Alles'),
@@ -319,6 +319,7 @@ class AdvancedSearchForm extends FormBase {
           '#type' => 'select',
           '#attributes' => [
             'aria-label' => $this->t("Select search field"),
+            'class' => [$block_class_prefix . '--select-field'],
           ],
           '#options' => $options,
           '#default_value' => $term_value[self::SEARCH_FORM_FIELD],

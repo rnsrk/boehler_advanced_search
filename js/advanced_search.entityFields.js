@@ -1,9 +1,47 @@
 (function ($, Drupal, drupalSettings) {
 
-  function toDropdown(field) {
-    let $inputElement = $('#edit-terms-0-value');
-    $inputElement.replaceWith('<select aria-label="Enter a search term" data-drupal-selector="edit-terms-0-value" id="edit-terms-0-value" name="terms[0][value]" value="" class="form-text form-element form-element--type-text form-element--api-textfield"></select>');
+  function toDropdown(field, i) {
+    let searchValueSelectId = 'edit-terms-' + i + '-value';
+    let SearchValueFieldselector = "[id^='" + searchValueSelectId + "']";
+    let $searchValueInputField = $(SearchValueFieldselector);
+    $searchValueInputField.hide();
+    let $oldHelperField = $('#edit-terms-' + i + '-helper');
+    $oldHelperField.remove();
+    $searchValueInputField.after('<select aria-label="Enter a search term" data-drupal-selector="edit-terms-' + i + '-helper" id="edit-terms-' + i + '-helper" name="terms[' + i +  '][helper]" value="" class="advanced-search--helper-dropdown form-text form-element form-element--type-text form-element--api-textfield"></select>');
+    let $newHelperField = $('#edit-terms-' + i + '-helper');
+    console.log($newHelperField);
+    if (field === 'f9ee0627498eacd6da7456ebc67cdab2' ) { // Art des Ausgangs
+      $newHelperField.empty();
+      $newHelperField.append('<option value="">Bitte auswählen...</option>');
+      $newHelperField.append('<option value="Abschreibung">Abschreibung</option>');
+      $newHelperField.append('<option value="andere">Andere</option>');
+      $newHelperField.append('<option value="Anteil übertragen/übernommen">Übertrag / Übernahme</option>');
+      $newHelperField.append('<option value="Auktion">Auktion</option>');
+      $newHelperField.append('<option value="Geschenk">Geschenk</option>');
+      $newHelperField.append('<option value="Inventar">Inventar</option>');
+      $newHelperField.append('<option value="Kommission">Kommission</option>');
+      $newHelperField.append('<option value="Lager">Lager</option>');
+      $newHelperField.append('<option value="keine Angabe">keine Angabe</option>');
+      $newHelperField.append('<option value="Rückgabe">Rückgabe</option>');
+      $newHelperField.append('<option value="Tausch">Tausch</option>');
+      $newHelperField.append('<option value="Verlust">Verlust</option>');
+      $newHelperField.append('<option value="Verkauf">Verkauf</option>');
+      $newHelperField.append('<option value="Verweis">Verweis auf weitere Karteikarte</option>');
+      $newHelperField.append('<option value="Weiterverwendung">Weiterverwendung</option>');
+    } else if (field === 'fcde5cd3cae88c211869faeee17a1606' ) { // Art des Eingangs
 
+    } else if (field === 'f112b71c83c942dbe763b6948de3e55a' ) { // Art des Geschäfts (Ausgang)
+
+    } else if (field === 'f72f76cc5137b99f47668a9d26bd7d4f' ) { // Art des Gescäfts (Eingang)
+
+    } else if (field === 'fe9c9a6d122f8605300a4f64882df6b4' ) { // Objektkategorie
+
+    }
+    $newHelperField.change(function(){
+      let selectedOption = $newHelperField.find('option:selected');
+      $searchValueInputField.val(selectedOption.val()).text(selectedOption.text());
+      console.log('field have changed');
+    }); 
   }
 
   Drupal.behaviors.advanceSearchEntityFields = {
@@ -78,9 +116,13 @@
       });
 
       $(document).on('change', '.advanced-search-form--select-field', function () {
-        console.log('change select field');
-        //let dropdown = toDropdown('#edit-terms-0-value');
+        let id = $(this).attr('id');
+        let i = id.substring(11, 12);
+        let field = $(this).val();
+        console.log(i);
+        let dropdown = toDropdown(field, i);
       });
+
     }
   };
 

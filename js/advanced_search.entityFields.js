@@ -7,10 +7,10 @@
     $searchValueInputField.hide();
     let $oldHelperField = $('#edit-terms-' + i + '-helper');
     $oldHelperField.remove();
-    $searchValueInputField.after('<select aria-label="Enter a search term" data-drupal-selector="edit-terms-' + i + '-helper" id="edit-terms-' + i + '-helper" name="terms[' + i +  '][helper]" value="" class="advanced-search--helper-dropdown form-text form-element form-element--type-text form-element--api-textfield"></select>');
+    $searchValueInputField.after('<select aria-label="Enter a search term" data-drupal-selector="edit-terms-' + i + '-helper" id="edit-terms-' + i + '-helper" name="terms[' + i + '][helper]" value="" class="advanced-search--helper-dropdown form-text form-element form-element--type-text form-element--api-textfield"></select>');
     let $newHelperField = $('#edit-terms-' + i + '-helper');
     console.log($newHelperField);
-    if (field === 'f9ee0627498eacd6da7456ebc67cdab2' ) { // Art des Ausgangs
+    if (field === 'f9ee0627498eacd6da7456ebc67cdab2') { // Art des Ausgangs
       $newHelperField.empty();
       $newHelperField.append('<option value="">Bitte auswählen...</option>');
       $newHelperField.append('<option value="Abschreibung">Abschreibung</option>');
@@ -28,27 +28,72 @@
       $newHelperField.append('<option value="Verkauf">Verkauf</option>');
       $newHelperField.append('<option value="Verweis">Verweis auf weitere Karteikarte</option>');
       $newHelperField.append('<option value="Weiterverwendung">Weiterverwendung</option>');
-    } else if (field === 'fcde5cd3cae88c211869faeee17a1606' ) { // Art des Eingangs
-
-    } else if (field === 'f112b71c83c942dbe763b6948de3e55a' ) { // Art des Geschäfts (Ausgang)
-
-    } else if (field === 'f72f76cc5137b99f47668a9d26bd7d4f' ) { // Art des Gescäfts (Eingang)
-
-    } else if (field === 'fe9c9a6d122f8605300a4f64882df6b4' ) { // Objektkategorie
-
+    } else if (field === 'fcde5cd3cae88c211869faeee17a1606') { // Art des Eingangs
+      $newHelperField.empty();
+      $newHelperField.append('<option value="">Bitte auswählen...</option>');
+      $newHelperField.append('<option value="andere">Andere</option>');
+      $newHelperField.append('<option value="Auktion">Andere</option>');
+      $newHelperField.append('<option value="Geschenk">Geschenk</option>');
+      $newHelperField.append('<option value="Kauf">Abschreibung</option>');
+      $newHelperField.append('<option value="keine Angabe (Sonderkarte, etc.)">keine Angabe</option>');
+      $newHelperField.append('<option value="Kommission">Übertrag / Übernahme</option>');
+      $newHelperField.append('<option value="Lager">Auktion</option>');
+      $newHelperField.append('<option value="Tausch">Tausch</option>');
+      $newHelperField.append('<option value="Übernahme">Übernahme</option>');
+    } else if (field === 'f112b71c83c942dbe763b6948de3e55a') { // Art des Geschäfts (Ausgang)
+      $newHelperField.empty();
+      $newHelperField.append('<option value="">Bitte auswählen...</option>');
+      $newHelperField.append('<option value="Share">Geschäftsbeteiligung</option>');
+      $newHelperField.append('<option value="Kommission">Kommission</option>');
+      $newHelperField.append('<option value="Nutzen/Gewinnbeteiligung">Nutzen/Gewinnbeteiligung</option>');
+    } else if (field === 'f72f76cc5137b99f47668a9d26bd7d4f') { // Art des Gescäfts (Eingang)
+      $newHelperField.empty();
+      $newHelperField.append('<option value="">Bitte auswählen...</option>');
+      $newHelperField.append('<option value="Share">Geschäftsbeteiligung</option>');
+      $newHelperField.append('<option value="Kommission">Kommission</option>');
+      $newHelperField.append('<option value="Nutzen/Gewinnbeteiligung">Nutzen/Gewinnbeteiligung</option>');
+    } else if (field === 'fe9c9a6d122f8605300a4f64882df6b4') { // Objektkategorie
+      $newHelperField.empty();
+      $newHelperField.append('<option value="">Bitte auswählen...</option>');
+      $newHelperField.append('<option value="Malerei">Malerei</option>');
+      $newHelperField.append('<option value="Skulptur, Plastik, Relief">Skulptur, Plastik</option>');
+      $newHelperField.append('<option value="Arbeiten auf Papier">Graphik (Zeichnung / Aquarell / Arbeit auf</option>');
+      $newHelperField.append('<option value="Handschriften (Autographen / Bücher)">Manuskripte/ Bücher</option>');
+      $newHelperField.append('<option value="Waffen, Rüstungen, Militaria">Militaria / Rüstungen / Waffen</option>');
+      $newHelperField.append('<option value="Wappen / Wappenscheibe">Wappen / Wappenscheiben</option>');
+      $newHelperField.append('<option value="Musikinstrumente">Musikinstrumente</option>');
+      $newHelperField.append('<option value="Möbel und Einrichtung">Möbel / Einrichtung</option>');
+      $newHelperField.append('<option value="Textilien (auch Tapisserien)">Textilien</option>');
+      $newHelperField.append('<option value="Schmuck">Schmuck</option>');
+      $newHelperField.append('<option value="Leuchter">Leuchter</option>');
+      $newHelperField.append('<option value="Uhren">Uhren</option>');
+      $newHelperField.append('<option value="Silber- und Goldschmiedekunst">Silber- und Goldschmiedekunst</option>');
+      $newHelperField.append('<option value="Rahmen">Rahmen</option>');
+      $newHelperField.append('<option value="Kunsthandwerk / Keramik">Kunsthandwerk Keramik</option>');
+      $newHelperField.append('<option value="Kunsthandwerk / Glas">Kunsthandwerk Glas</option>');
+      $newHelperField.append('<option value="Kunsthandwerk / Holz">Kunsthandwerk Holz</option>');
+      $newHelperField.append('<option value="Kunsthandwerk / Metall">Kunsthandwerk / Metall</option>');
+      $newHelperField.append('<option value="Kunsthandwerk / Sonstiges"> Kunsthandwerk Sonstiges</option>');
+      $newHelperField.append('<option value="Münzen und Medaillen">Münzen / Medaillen</option>');
+      $newHelperField.append('<option value="Asiatika">Asiatika</option>');
+      $newHelperField.append('<option value="Varia">Varia</option>');
     }
-    $newHelperField.change(function(){
+    $newHelperField.change(function () {
       let selectedOption = $newHelperField.find('option:selected');
       $searchValueInputField.val(selectedOption.val()).text(selectedOption.text());
       console.log('field have changed');
-    }); 
+    });
   }
 
   Drupal.behaviors.advanceSearchEntityFields = {
     attach: function attach(context, settings) {
-      let $searchSelectElement = $('#edit-terms-0-search');
+      let $searchSelectElement = $('[id^="edit-terms-0-search"]');
       let originalSearchSelectOptions = $searchSelectElement.find('option').clone();
-      $(document).on('change', '.advanced-search-form--entity', function() {
+      $searchSelectElement.empty();
+      $searchSelectElement.append('<option value="all" selected="selected">Keyword</option>');
+      $searchSelectElement.append('<option value="agg__all__red_bem">Redaktionelle Bermerkung</option>');
+      $searchSelectElement.append('<option value="agg__all__auktionshaus">Auktionshaus</option>');
+      $(document).on('change', '.advanced-search-form--entity', function () {
         let id = $(this).attr('id');
         let i = id.substring(11, 12);
         let $select = $('#' + id);
@@ -107,11 +152,33 @@
           $searchSelect.append('<option value="f838846307ea61a3d408df5022d498ba">Name</option>');
           $searchSelect.append('<option value="f53c209f6575fb5a7a0e7e7f424f7abd">Alternative Namen</option>');
           $searchSelect.append('<option value="field_mit_institution_verbundene">verbundene Orte</option>');
-        } else if ($select.val() === 'alles') {
+        } else if ($select.val() === 'b65c3a85d16724d84a5eb0d2268629a6') { // Objekt
           $searchSelect.empty();
-          $.each(originalSearchSelectOptions, function(i, option) {
-            $searchSelect.append(option);
-          });
+          $searchSelect.append('<option value="agg__obj__titel">Titel des Objektes</option>');
+          $searchSelect.append('<option value="f6afd3974f3078552d6e8a559a45c0fd">Künstler:in</option>');
+          $searchSelect.append('<option value="fcd0255e4867b11aaa047145cbad79f5">Ermittelte Zuschreibung</option>');
+          $searchSelect.append('<option value="fcfd11d0b174711420dbdda9ef1b84e2">Gutachter:in</option>');
+          $searchSelect.append('<option value="fdb2007dc7b61386a6c2272278ada29d">Hersteller:in</option>');
+          $searchSelect.append('<option value="f6c5736f1ae00bfc28d5bd8325af40a5">Provenienz (Person)</option>');
+          $searchSelect.append('<option value="f0213410c23e00305302175df631aa08">Provenienz (Institution)</option>');
+          $searchSelect.append('<option value="f1c8718a4dddfb7fde688ca22e7a9247">Ermittelte Provenienz (Person)</option>');
+          $searchSelect.append('<option value="f0e528faacc9f9a6d2a568cf6c267ae6">Ermittelte Provenienz (Institution)</option>');
+          $searchSelect.append('<option value="agg__obj__auktionshaus">Auktionshaus</option>');
+          $searchSelect.append('<option value="agg__obj__auktionstitel">Auktionstitel</option>');
+          $searchSelect.append('<option value="agg__obj__lotnummer">Lotnummer</option>');
+          $searchSelect.append('<option value="fe03f1bcb9bf84f6fa8bf265090313c5">Objekt-ID</option>');
+          $searchSelect.append('<option value="f104330976ecbed46b8d10f6dfd2394d">Objekttyp</option>');
+        } else if ($select.val() === 'b1afe1fa9a31c7622ab2ae8ef1d29673') { // Person
+          $searchSelect.empty();
+          $searchSelect.append('<option value="fb7ca3fb25fe824b40d6923e212ee7c4">Beruf/ Tätigkeit</option>');
+          $searchSelect.append('<option value="agg__per__name">Name</option>');
+          $searchSelect.append('<option value="ff1417157085029dc0317c24ad0a8db2">Redaktionelle Bemerkung</option>');
+
+        } else if ($select.val() === 'ueberall') {
+          $searchSelect.empty();
+          $searchSelect.append('<option value="all" selected="selected">Keyword</option>');
+          $searchSelect.append('<option value="agg__all__red_bem">Redaktionelle Bermerkung</option>');
+          $searchSelect.append('<option value="agg__all__auktionshaus">Auktionshaus</option>');
         }
       });
 
@@ -120,7 +187,9 @@
         let i = id.substring(11, 12);
         let field = $(this).val();
         console.log(i);
-        let dropdown = toDropdown(field, i);
+        if (['f9ee0627498eacd6da7456ebc67cdab2', 'fcde5cd3cae88c211869faeee17a1606', 'f112b71c83c942dbe763b6948de3e55a', 'f72f76cc5137b99f47668a9d26bd7d4f'].includes(field)) {
+          let dropdown = toDropdown(field, i);
+        }
       });
 
     }

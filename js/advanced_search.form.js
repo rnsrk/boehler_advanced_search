@@ -185,8 +185,6 @@
           // Handle the page summary
           $("#ajax-page-summary").hide();
           $( document ).ajaxComplete(function( event, request, settings ) {
-            console.log('ajax complete');
-
               $("#ajax-page-summary").hide();
               if (jQuery("#ajax-page-summary").length >0) {
                 $(".pager__summary").html($("#ajax-page-summary").html());

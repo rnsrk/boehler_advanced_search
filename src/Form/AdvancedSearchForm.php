@@ -307,11 +307,10 @@ class AdvancedSearchForm extends FormBase {
           ],
           '#options' => [
             'ueberall' => $this->t('Überall'),
+            'akteur' => $this->t('Akteur'),
             'b48556e79962e0a3c8d0041317c853b9' => $this->t('Archivalie'),
             'ba419826c9014f40126565bf413f7a59' => $this->t('Auktion'),
-            'b1d559f7b6af224a3f6f3b9a12e6b161' => $this->t('Institution'),
             'b65c3a85d16724d84a5eb0d2268629a6' => $this->t('Objekt'),
-            'b1afe1fa9a31c7622ab2ae8ef1d29673' => $this->t('Person'),
           ],
           //'#default_value' => 'alles',
         ],

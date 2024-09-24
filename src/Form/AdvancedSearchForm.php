@@ -306,7 +306,7 @@ class AdvancedSearchForm extends FormBase {
             'class' => [$block_class_prefix . '--entity'],
           ],
           '#options' => [
-            'alles' => $this->t('Alles'),
+            'ueberall' => $this->t('Überall'),
             'b48556e79962e0a3c8d0041317c853b9' => $this->t('Archivalie'),
             'ba419826c9014f40126565bf413f7a59' => $this->t('Auktion'),
             'b1d559f7b6af224a3f6f3b9a12e6b161' => $this->t('Institution'),

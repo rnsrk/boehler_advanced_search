@@ -137,7 +137,15 @@
             $form.submit(function (e) {
               //e.preventDefault();
               e.stopPropagation();
-              const inputs = $form.serializeArray();
+              let inputs = $form.serializeArray();
+              //console.log(inputs);
+              //let inputs = originalInputs.filter(function(el) {
+              //  return  !el.name.match(/terms\[\d+\]\[entity\]/);
+              //});
+
+              //inputs = originalInputs;
+              console.log(inputs);
+
               const href = url(inputs, settings.advanced_search_form);
 
               /* digitalutsc added*/
@@ -168,7 +176,6 @@
                   $( this ).attr("href", new_link);
                 }
               });
-
               window.history.pushState(null, document.title, href);
             });
           }

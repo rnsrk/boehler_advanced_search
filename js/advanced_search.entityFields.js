@@ -9,8 +9,7 @@
     $oldHelperField.remove();
     $searchValueInputField.after('<select aria-label="Enter a search term" data-drupal-selector="edit-terms-' + i + '-helper" id="edit-terms-' + i + '-helper" name="terms[' + i + '][helper]" value="" class="advanced-search--helper-dropdown form-text form-element form-element--type-text form-element--api-textfield"></select>');
     let $newHelperField = $('#edit-terms-' + i + '-helper');
-    console.log($newHelperField);
-    if (field === 'agg__arch__transaktion') { // Transaktion
+    if (['agg__arch__transaktion', 'agg__all__transaktion'].includes(field)) { // Transaktion
       $newHelperField.empty();
       $newHelperField.append('<option value="">Bitte auswählen...</option>');
       $newHelperField.append('<option value="Abschreibung">Abschreibung</option>');
@@ -32,7 +31,7 @@
       $newHelperField.append('<option value="Verkauf">Verkauf</option>');
       $newHelperField.append('<option value="Verweis">Verweis auf weitere Karteikarte</option>');
       $newHelperField.append('<option value="Weiterverwendung">Weiterverwendung</option>');
-    } else if (field === 'agg__arch__objektkategorie') { // Objektkategorie
+    } else if ([ 'agg__all__objektkategorie', 'agg__arch__objektkategorie', 'agg__obj__objektkategorie'].includes(field)) { // Objektkategorie
       $newHelperField.empty();
       $newHelperField.append('<option value="">Bitte auswählen...</option>');
       $newHelperField.append('<option value="Malerei">Malerei</option>');
@@ -70,8 +69,22 @@
       let originalSearchSelectOptions = $searchSelectElement.find('option').clone();
       $searchSelectElement.empty();
       $searchSelectElement.append('<option value="all" selected="selected">Keyword</option>');
-      $searchSelectElement.append('<option value="agg__all__red_bem">Redaktionelle Bermerkung</option>');
+      $searchSelectElement.append('<option value="agg__all__akt">Akteur</option>');
+      $searchSelectElement.append('<option value="agg__all__anmerkung">Anmerkung</option>');
+      $searchSelectElement.append('<option value="f20673c10d8d786816de3c4338d1c3ac">Art der Institution</option>');
       $searchSelectElement.append('<option value="agg__all__auktionshaus">Auktionshaus</option>');
+      $searchSelectElement.append('<option value="f4394d15487b58f49c719cf850f57e3a">Auktionskatalog</option>');
+      $searchSelectElement.append('<option value="agg__all_auktionstitel">Auktionstitel</option>');
+      $searchSelectElement.append('<option value="fb7ca3fb25fe824b40d6923e212ee7c4">Beruf/ Tätigkeit</option>');
+      $searchSelectElement.append('<option value="fd4b844b736f2215421ead5b2fc0f5ef">Fotonummer</option>');
+      $searchSelectElement.append('<option value="f807d62b374606e52e8833118375ecb0">Karteikarten-ID</option>');
+      $searchSelectElement.append('<option value="agg__all__kue_herst">Künstler:in/ Hersteller:in</option>');
+      $searchSelectElement.append('<option value="agg__obj__lotnummer">Lotnummer</option>');
+      $searchSelectElement.append('<option value="fe03f1bcb9bf84f6fa8bf265090313c5">Objekt-ID</option>');
+      $searchSelectElement.append('<option value="agg__all__objektkategorie">Objektkategorie</option>');
+      $searchSelectElement.append('<option value="agg__all__objekttitel">Objekttitel</option>');
+      $searchSelectElement.append('<option value="agg__all__ort_regi">Ort/Region</option>');
+      $searchSelectElement.append('<option value="agg__all__transaktion">Transaktion</option>');
       $(document).on('change', '.advanced-search-form--entity', function () {
         let id = $(this).attr('id');
         let i = id.substring(11, 12);
@@ -111,14 +124,29 @@
           $searchSelect.append('<option value="agg__obj__kue_herst">Künstler:in/ Hersteller:in</option>');
           $searchSelect.append('<option value="agg__obj__lotnummer">Lotnummer</option>');
           $searchSelect.append('<option value="fe03f1bcb9bf84f6fa8bf265090313c5">Objekt-ID</option>');
-          $searchSelect.append('<option value="f104330976ecbed46b8d10f6dfd2394d">Objekttyp</option>');
-          $searchSelect.append('<option value="agg__obj__titel">Titel des Objektes</option>');
+          $searchSelect.append('<option value="agg__obj__titel">Objekttitel</option>');
+          $searchSelect.append('<option value="agg__obj__objektkategorie">Objektkategorie</option>');
+          $searchSelect.append('<option value="agg__obj__ort_regi">Ort/Region</option>');
         } else if ($select.val() === 'ueberall') {
           $searchSelect.empty();
           $searchSelect.append('<option value="all" selected="selected">Keyword</option>');
           $searchSelect.append('<option value="agg__all__akt">Akteur</option>');
+          $searchSelect.append('<option value="agg__all__anmerkung">Anmerkung</option>');
+          $searchSelect.append('<option value="f20673c10d8d786816de3c4338d1c3ac">Art der Institution</option>');
           $searchSelect.append('<option value="agg__all__auktionshaus">Auktionshaus</option>');
-          $searchSelect.append('<option value="agg__all__red_bem">Redaktionelle Bermerkung</option>');
+          $searchSelect.append('<option value="f4394d15487b58f49c719cf850f57e3a">Auktionskatalog</option>');
+          $searchSelect.append('<option value="agg__all_auktionstitel">Auktionstitel</option>');
+          $searchSelect.append('<option value="fb7ca3fb25fe824b40d6923e212ee7c4">Beruf/ Tätigkeit</option>');
+          $searchSelect.append('<option value="fd4b844b736f2215421ead5b2fc0f5ef">Fotonummer</option>');
+          $searchSelect.append('<option value="f807d62b374606e52e8833118375ecb0">Karteikarten-ID</option>');
+          $searchSelect.append('<option value="agg__all__kue_herst">Künstler:in/ Hersteller:in</option>');
+          $searchSelect.append('<option value="agg__obj__lotnummer">Lotnummer</option>');
+          $searchSelect.append('<option value="fe03f1bcb9bf84f6fa8bf265090313c5">Objekt-ID</option>');
+          $searchSelect.append('<option value="agg__all__objektkategorie">Objektkategorie</option>');
+          $searchSelect.append('<option value="agg__all__objekttitel">Objekttitel</option>');
+          $searchSelect.append('<option value="agg__all__ort_regi">Ort/Region</option>');
+          $searchSelect.append('<option value="agg__all__transaktion">Transaktion</option>');
+
         }
       });
 
@@ -126,8 +154,16 @@
         let id = $(this).attr('id');
         let i = id.substring(11, 12);
         let field = $(this).val();
-        if (['agg__arch__transaktion', 'agg__arch__objektkategorie'].includes(field)) {
+        if (['agg__arch__transaktion', 'agg__all__transaktion', 'agg__all__objektkategorie', 'agg__arch__objektkategorie', 'agg__obj__objektkategorie'].includes(field)) {
+          console.log(field);
           let dropdown = toDropdown(field, i);
+        } else {
+          let searchValueSelectId = 'edit-terms-' + i + '-value';
+          let SearchValueFieldselector = "[id^='" + searchValueSelectId + "']";
+          let $searchValueInputField = $(SearchValueFieldselector);
+          $searchValueInputField.show();
+          let $oldHelperField = $('#edit-terms-' + i + '-helper');
+          $oldHelperField.remove();
         }
       });
 

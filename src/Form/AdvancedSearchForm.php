@@ -37,6 +37,7 @@ class AdvancedSearchForm extends FormBase {
   const OR_OP = 'OR';
 
   // These are also hard-coded in advanced_search.form.js.
+  const ENTITY_FORM_FIELD = 'entity';
   const CONJUNCTION_FORM_FIELD = 'conjunction';
   const SEARCH_FORM_FIELD = 'search';
   const INCLUDE_FORM_FIELD = 'include';
@@ -172,6 +173,7 @@ class AdvancedSearchForm extends FormBase {
    */
   protected function defaultTermValues(array $options) {
     return [
+      self::ENTITY_FORM_FIELD => 'ueberall',
       self::CONJUNCTION_FORM_FIELD => self::AND_OP,
       // First item in list is default.
       self::SEARCH_FORM_FIELD => key($options),
@@ -266,6 +268,7 @@ class AdvancedSearchForm extends FormBase {
       'query_parameter' => AdvancedSearchQuery::getQueryParameter(),
       'recurse_parameter' => AdvancedSearchQuery::getRecurseParameter(),
       'mapping' => [
+        self::ENTITY_FORM_FIELD => AdvancedSearchQueryTerm::ENTITY_QUERY_PARAMETER,
         self::CONJUNCTION_FORM_FIELD => AdvancedSearchQueryTerm::CONJUNCTION_QUERY_PARAMETER,
         self::SEARCH_FORM_FIELD => AdvancedSearchQueryTerm::FIELD_QUERY_PARAMETER,
         self::INCLUDE_FORM_FIELD => AdvancedSearchQueryTerm::INCLUDE_QUERY_PARAMETER,
@@ -285,6 +288,7 @@ class AdvancedSearchForm extends FormBase {
       $first = $i == 0;
       $term_value = !empty($term_values) ? array_shift($term_values) : $term_default_values;
       $conjunction = $term_value[self::CONJUNCTION_FORM_FIELD] ?? $term_default_values[self::CONJUNCTION_FORM_FIELD];
+      $entity = $term_value[self::ENTITY_FORM_FIELD] ?? $term_default_values[self::ENTITY_FORM_FIELD];
       $term_elements[] = [
         // Only show on terms after the first.
         self::CONJUNCTION_FORM_FIELD => $first ? NULL : [
@@ -299,7 +303,7 @@ class AdvancedSearchForm extends FormBase {
           '#default_value' => $conjunction,
           '#theme_wrappers' => [],
         ],
-        'entity' => [
+        self::ENTITY_FORM_FIELD => [
           '#type' => 'select',
           '#attributes' => [
             'aria-label' => $this->t("Select Entity"),
@@ -312,7 +316,7 @@ class AdvancedSearchForm extends FormBase {
             'ba419826c9014f40126565bf413f7a59' => $this->t('Auktion'),
             'b65c3a85d16724d84a5eb0d2268629a6' => $this->t('Objekt'),
           ],
-          //'#default_value' => 'alles',
+          '#default_value' => $entity,
         ],
         self::SEARCH_FORM_FIELD => [
           '#type' => 'select',

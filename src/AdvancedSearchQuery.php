@@ -165,7 +165,7 @@ class AdvancedSearchQuery {
         // To support negative queries we must first bring in all documents.
         $q[] = $this->negativeQuery($terms) ? "*:*" : "";
       }
-
+      $q[] = '(';
       $term = array_shift($terms);
       $q[] = $term->toSolrQuery($field_mapping);
 
@@ -180,7 +180,7 @@ class AdvancedSearchQuery {
 
       // For multiple conditions.
       foreach ($terms as $term) {
-        $q[] = $term->getConjunction();
+        $q[] = ')' . $term->getConjunction() . '(';
         $q[] = $term->toSolrQuery($field_mapping);
 
         // New.
@@ -193,6 +193,8 @@ class AdvancedSearchQuery {
         }
 
       }
+
+      $q[] = ')';
       $q = implode(' ', $q);
 
       // Limit extra processing if Luncene Search is enable.
@@ -257,7 +259,7 @@ class AdvancedSearchQuery {
           foreach ($index->getFields() as $field_id => $field) {
               $boostedFields[$field_id] = $field->getBoost();
           }
-          
+
           $str_fields_with_boost = "";
           // Adding a boost number for each field)
           foreach($query_fields as $solr_field) {
@@ -291,7 +293,7 @@ class AdvancedSearchQuery {
         // make this field non-empty.
         //$search_api_query->keys("advanced search");
       }
-
+      dpm($q, "q");
       $solarium_query->setQuery($q);
     }
   }

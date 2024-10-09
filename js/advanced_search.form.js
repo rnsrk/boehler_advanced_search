@@ -135,16 +135,16 @@
           // normal submit which will redirect to the appropriate page.
           if (!settings.advanced_search_form.redirect) {
             $form.submit(function (e) {
-              //e.preventDefault();
+              e.preventDefault();
               e.stopPropagation();
               let inputs = $form.serializeArray();
               //console.log(inputs);
-              //let inputs = originalInputs.filter(function(el) {
+              //inputs = inputs.filter(function(el) {
               //  return  !el.name.match(/terms\[\d+\]\[entity\]/);
               //});
 
               //inputs = originalInputs;
-              console.log(inputs);
+              //console.log(inputs);
 
               const href = url(inputs, settings.advanced_search_form);
 

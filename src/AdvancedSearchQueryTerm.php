@@ -19,6 +19,7 @@ class AdvancedSearchQueryTerm {
 
   // Used for serializing / deserializing query parameters.
   // These are also hard-coded in advanced_search.form.js.
+  const ENTITY_QUERY_PARAMETER = 'e';
   const CONJUNCTION_QUERY_PARAMETER = 'c';
   const FIELD_QUERY_PARAMETER = 'f';
   const INCLUDE_QUERY_PARAMETER = 'i';
@@ -284,7 +285,7 @@ class AdvancedSearchQueryTerm {
   public function toSolrQuery(array $solr_field_mapping) {
     $terms = [];
     $query_helper = \Drupal::service('solarium.query_helper');
-    $value = $query_helper->escapePhrase(trim($this->value));
+    $value = $query_helper->escapePhrase($this->value);
 
     $config = \Drupal::config(SettingsForm::CONFIG_NAME);
     $isDismax = $config->get(SettingsForm::EDISMAX_SEARCH_FLAG);
@@ -345,7 +346,7 @@ class AdvancedSearchQueryTerm {
             foreach ($keys as $key) {
 
               if ($i != count($keys) - 1) {
-                $str .= $field . ':"' . $key . '"  AND ';
+                $str .= $field . ':"' . $key . '" AND ';
               }
               else {
                 $str .= $field . ':"' . $key . '")';
